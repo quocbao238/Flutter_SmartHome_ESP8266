@@ -8,6 +8,8 @@ import 'package:smarthome/UI/screens/define_config/define.dart';
 import 'package:smarthome/blocs/login_blocs/login_bloc.dart';
 import 'package:smarthome/service/firebase/authenticate.dart';
 
+import '../homescreen/home_screen.dart';
+
 class LoginScr extends StatefulWidget {
   @override
   _LoginScrState createState() => _LoginScrState();
@@ -23,6 +25,10 @@ class _LoginScrState extends State<LoginScr> {
         listener: (context, state) {
           if (state is LoadingState) {
           } else if (state is LoginSucessState) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
             print("Login sucess");
           } else if (state is LoginFailState) {
             print("Login Fail");
@@ -144,7 +150,7 @@ class _LoginScrState extends State<LoginScr> {
                                               .add(GoogleOnClickEvent());
                                         },
                                         child: Container(
-                                          height: height * 0.1,
+                                          height: height * 0.08,
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(radius),
@@ -162,7 +168,7 @@ class _LoginScrState extends State<LoginScr> {
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(top: padding),
-                                        height: height * 0.1,
+                                        height: height * 0.08,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(radius),
